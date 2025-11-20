@@ -21,6 +21,18 @@ export async function getManifest() {
       page: 'dist/options/index.html',
       open_in_tab: true,
     },
+    commands: {
+      _execute_action: {
+        suggested_key: {
+          default: 'Ctrl+Shift+P', // Windows/Linux
+          mac: 'Command+Shift+P', // macOS
+          chromeos: 'Ctrl+Shift+P',
+          linux: 'Ctrl+Shift+P',
+          windows: 'Ctrl+Shift+P',
+        },
+        description: '打开我的扩展',
+      },
+    },
     background: isFirefox
       ? {
           scripts: ['dist/background/index.mjs'],
@@ -35,22 +47,23 @@ export async function getManifest() {
       128: 'assets/icon-512.png',
     },
     permissions: [
-      'tabs',
-      'storage',
+      // 'tabs',
+      // 'storage',
       'activeTab',
-      'sidePanel',
+      // 'sidePanel',
+      'bookmarks',
     ],
     host_permissions: ['*://*/*'],
-    content_scripts: [
-      {
-        matches: [
-          '<all_urls>',
-        ],
-        js: [
-          'dist/contentScripts/index.global.js',
-        ],
-      },
-    ],
+    // content_scripts: [
+    //   {
+    //     matches: [
+    //       '<all_urls>',
+    //     ],
+    //     js: [
+    //       'dist/contentScripts/index.global.js',
+    //     ],
+    //   },
+    // ],
     web_accessible_resources: [
       {
         resources: ['dist/contentScripts/style.css'],
@@ -66,17 +79,17 @@ export async function getManifest() {
   }
 
   // add sidepanel
-  if (isFirefox) {
-    manifest.sidebar_action = {
-      default_panel: 'dist/sidepanel/index.html',
-    }
-  }
-  else {
-    // the sidebar_action does not work for chromium based
-    (manifest as any).side_panel = {
-      default_path: 'dist/sidepanel/index.html',
-    }
-  }
+  // if (isFirefox) {
+  //   manifest.sidebar_action = {
+  //     default_panel: 'dist/sidepanel/index.html',
+  //   }
+  // }
+  // else {
+  //   // the sidebar_action does not work for chromium based
+  //   (manifest as any).side_panel = {
+  //     default_path: 'dist/sidepanel/index.html',
+  //   }
+  // }
 
   // FIXME: not work in MV3
   if (isDev && false) {
