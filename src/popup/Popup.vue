@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { asyncComputed, useEventListener } from '@vueuse/core'
+import { fuzzyMatch } from './utils/match'
 
 interface Item {
   id?: number
@@ -17,7 +18,10 @@ const displayedItems: Ref<Item[]> = asyncComputed(async () => {
   }
   const tabs = await browser.tabs.query({})
   const filteredTabs = tabs.filter((tab) => {
-    return tab.title?.includes(input.value) || tab.url?.includes(input.value)
+    if (tab.title === undefined || tab.url === undefined) {
+      return false
+    }
+    return fuzzyMatch(tab.title, input.value) || fuzzyMatch(tab.url, input.value)
   })
   const bookmarks = await browser.bookmarks.search(input.value)
   const items = [
