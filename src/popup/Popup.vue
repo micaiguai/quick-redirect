@@ -9,8 +9,15 @@ interface Item {
   type: 'search' | 'tab' | 'bookmark'
 }
 
+const ITEM_SIZE
+  /** Height */
+  = 26
+  /** Margin */
+  + 8
+
 const inputRef = ref<HTMLInputElement>()
 const input = ref('')
+const itemsContainerRef = ref<HTMLDivElement>()
 
 const displayedItems: Ref<Item[]> = asyncComputed(async () => {
   if (input.value === '') {
@@ -60,6 +67,9 @@ useEventListener('keydown', (e) => {
   else if (e.key === 'ArrowDown') {
     activeIdx.value = (activeIdx.value + 1) % len
   }
+  itemsContainerRef.value?.scrollTo({
+    top: ITEM_SIZE * (activeIdx.value - 1),
+  })
 })
 
 useEventListener('keydown', async (e) => {
@@ -97,21 +107,25 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main class="w-[300px] p-4 text-center text-gray-700">
-    <input ref="inputRef" v-model="input" type="text" placeholder="Search" class="w-full px-2 py-1 border border-gray-400 rounded">
-    <div
-      v-for="(item, idx) in displayedItems"
-      :key="idx"
-      class="mt-2 cursor-pointer flex items-center justify-start px-2 py-1 rounded"
-      :class="{ 'bg-gray-200': idx === activeIdx }"
-      @click="onClick(idx)"
-    >
-      <div class="w-4 h-4 inline-block">
-        {{ item.type === 'search' ? '🔍' : item.type === 'bookmark' ? '⭐' : '🔵' }}
-      </div>
-      <div class="flex-1 ml-2 flex justify-start truncate">
-        {{ item.title }}
-        {{ item.url }}
+  <main class="w-[300px] max-h-[400px] text-center text-gray-700 overflow-auto flex flex-col pt-4">
+    <div class="px-4">
+      <input ref="inputRef" v-model="input" type="text" placeholder="Search" class="w-full px-2 py-1 border border-gray-400 rounded">
+    </div>
+    <div ref="itemsContainerRef" class="flex-1 overflow-auto px-4 pb-4">
+      <div
+        v-for="(item, idx) in displayedItems"
+        :key="idx"
+        class="mt-2 cursor-pointer flex items-center justify-start px-2 py-1 rounded"
+        :class="{ 'bg-gray-200': idx === activeIdx }"
+        @click="onClick(idx)"
+      >
+        <div class="w-4 h-4 inline-block">
+          {{ item.type === 'search' ? '🔍' : item.type === 'bookmark' ? '⭐' : '🔵' }}
+        </div>
+        <div class="flex-1 ml-2 flex justify-start truncate">
+          {{ item.title }}
+          {{ item.url }}
+        </div>
       </div>
     </div>
   </main>
