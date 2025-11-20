@@ -26,12 +26,11 @@ jobs:
       - name: Build
         run: pnpm run build
       - name: Compress extension folder to extension.zip
-        run: |
-          cd dist
-          zip -r ../quick-redirect.zip .
+        run: zip -r extension.zip extension
+          
       - name: Release
         uses: softprops/action-gh-release@v2
         if: github.ref_type == 'tag'
         with:
           files: |
-            quick-redirect.zip
+            extension.zip
