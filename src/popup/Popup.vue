@@ -62,13 +62,13 @@ watch(displayedItems, (items) => {
 useEventListener('keydown', (e) => {
   const len = displayedItems.value.length ?? 0
   if (e.key === 'ArrowUp') {
-    activeIdx.value = (activeIdx.value - 1) % len
+    activeIdx.value = (len + activeIdx.value - 1) % len
   }
   else if (e.key === 'ArrowDown') {
-    activeIdx.value = (activeIdx.value + 1) % len
+    activeIdx.value = (len + activeIdx.value + 1) % len
   }
   itemsContainerRef.value?.scrollTo({
-    top: ITEM_SIZE * (activeIdx.value - 1),
+    top: ITEM_SIZE * activeIdx.value,
   })
 })
 

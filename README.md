@@ -23,8 +23,8 @@
 
 | Platform        | Shortcut           | Action                    |
 |-----------------|--------------------|---------------------------|
-| Windows / Linux | `Ctrl + Shift + P` | Open Quick Redirect Popup |
-| macOS           | `Cmd + Shift + P`  | Open Quick Redirect Popup |
+| Windows / Linux | `Alt + P` | Open Quick Redirect Popup |
+| macOS           | `Option + P`  | Open Quick Redirect Popup |
 
 You can view or change it anytime in the browser’s extensions shortcuts page.
 

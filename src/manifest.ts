@@ -24,11 +24,11 @@ export async function getManifest() {
     commands: {
       _execute_action: {
         suggested_key: {
-          default: 'Ctrl+Shift+P', // Windows/Linux
-          mac: 'Command+Shift+P', // macOS
-          chromeos: 'Ctrl+Shift+P',
-          linux: 'Ctrl+Shift+P',
-          windows: 'Ctrl+Shift+P',
+          default: 'Alt+P',
+          mac: 'Option+P',
+          chromeos: 'Alt+P',
+          linux: 'Alt+P',
+          windows: 'Alt+P',
         },
         description: '打开我的扩展',
       },
