@@ -1,7 +1,7 @@
 {
   "name": "quick-redirect",
   "displayName": "Quick Redirect",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@9.7.1",
   "description": "quick redirect",
@@ -31,12 +31,16 @@
     "typecheck": "tsc --noEmit",
     "tag": "pnpx bumpp"
   },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^2.27.0",
     "@ffflorian/jszip-cli": "^3.8.5",
     "@iconify/json": "^2.2.239",
     "@playwright/test": "^1.46.1",
     "@types/fs-extra": "^11.0.4",
+    "@types/lodash": "^4.17.21",
     "@types/node": "^22.5.0",
     "@types/webextension-polyfill": "^0.12.0",
     "@typescript-eslint/eslint-plugin": "^8.2.0",
