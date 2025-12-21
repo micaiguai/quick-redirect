@@ -1,5 +1,5 @@
-import fs from 'fs-extra'
 import type { Manifest } from 'webextension-polyfill'
+import fs from 'fs-extra'
 import type PkgType from '../package.json'
 import { isDev, isFirefox, port, r } from '../scripts/utils'
 
@@ -51,6 +51,7 @@ export async function getManifest() {
       // 'storage',
       'activeTab',
       // 'sidePanel',
+      'favicon',
       'bookmarks',
     ],
     host_permissions: ['*://*/*'],

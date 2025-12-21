@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^2.27.0
@@ -23,6 +27,9 @@ importers:
       '@types/fs-extra':
         specifier: ^11.0.4
         version: 11.0.4
+      '@types/lodash':
+        specifier: ^4.17.21
+        version: 4.17.21
       '@types/node':
         specifier: ^22.5.0
         version: 22.5.0
@@ -922,6 +929,9 @@ packages:
 
   '@types/jsonfile@6.1.4':
     resolution: {integrity: sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==}
+
+  '@types/lodash@4.17.21':
+    resolution: {integrity: sha512-FOvQ0YPD5NOfPgMzJihoT+Za5pdkDJWcbpuj1DjaKZIr/gxodQjY/uWEFlTNqW2ugXHUiL8lRQgw63dzKHZdeQ==}
 
   '@types/mdast@3.0.15':
     resolution: {integrity: sha512-LnwD+mUEfxWMa1QpDraczIn6k0Ee3SMicuYSSzS6ZYl2gKS09EClnJYGd8Du6rfc5r/GZEk5o1mRb8TaTj03sQ==}
@@ -5311,6 +5321,8 @@ snapshots:
   '@types/jsonfile@6.1.4':
     dependencies:
       '@types/node': 22.5.0
+
+  '@types/lodash@4.17.21': {}
 
   '@types/mdast@3.0.15':
     dependencies:

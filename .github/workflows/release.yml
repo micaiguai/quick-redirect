@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - "v*.*.*"
+      - 'v*.*.*'
 
 permissions:
   contents: write
@@ -30,7 +30,7 @@ jobs:
         run: pnpm run build
       - name: Compress extension folder to extension.zip
         run: zip -r extension.zip extension
-          
+
       - name: Release
         uses: softprops/action-gh-release@v2
         if: github.ref_type == 'tag'
