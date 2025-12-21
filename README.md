@@ -4,8 +4,10 @@
 
 ## Installation
 
-- [From Chrome Web Store](https://chromewebstore.google.com/detail/quick-redirect/ccpomcjddmhiadddalbadlbpelcnbcia)
-- [From Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/quick-redirect/mfbkoejhkcjokcpgongffgnmnihogjgh)
+### From Store
+
+- [Chrome Web Store](https://chromewebstore.google.com/detail/quick-redirect/ccpomcjddmhiadddalbadlbpelcnbcia)
+- [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/quick-redirect/mfbkoejhkcjokcpgongffgnmnihogjgh)
 
 ### Manual Install
 
