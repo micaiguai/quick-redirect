@@ -4,11 +4,8 @@
 
 ## Installation
 
-### Chrome Web Store (Coming soon)
-
-### Microsoft Edge Add-ons
-
-[Download Quick Redirect from Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/quick-redirect/mfbkoejhkcjokcpgongffgnmnihogjgh)
+- [From Chrome Web Store](https://chromewebstore.google.com/detail/quick-redirect/ccpomcjddmhiadddalbadlbpelcnbcia)
+- [From Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/quick-redirect/mfbkoejhkcjokcpgongffgnmnihogjgh)
 
 ### Manual Install
 
