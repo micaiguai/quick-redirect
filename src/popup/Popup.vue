@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import type { Props as ItemProps } from './components/Item/Item.vue'
+
 import { useEventListener } from '@vueuse/core'
 import { throttle } from 'lodash'
-import type { Props as ItemProps } from './components/Item/Item.vue'
-import Input from './components/Item/Input/Input.vue'
-
+import Input from './components/Input/Input.vue'
 import Item from './components/Item/Item.vue'
 import { fuzzyMatch } from './utils/match'
 
@@ -29,7 +29,7 @@ watch(items, () => {
   curIndex.value = idx < 0 ? 0 : idx
 })
 
-useEventListener('keydown', (e) => {
+useEventListener('keyup', (e) => {
   const len = items.value.length ?? 0
   if (e.key === 'ArrowUp') {
     curIndex.value = (len + curIndex.value - 1) % len
@@ -110,11 +110,12 @@ const updateItems = throttle(async () => {
       return {
         id: bookmark.id,
         title: bookmark.title,
-        url: bookmark.url ?? '',
+        url: bookmark.url,
         type: 'bookmark' as ItemT['type'],
         icon: `chrome-extension://${browser.runtime.id}/_favicon/?pageUrl=${url}&size=${ICON_SIZE.toString()}`,
       }
     })
+    .filter(bookmark => bookmark.url)
   _items.push(
     ...filteredTabs,
     ...bookmarks,
@@ -146,12 +147,14 @@ async function onInputUpdate(value: string) {
     <div ref="itemsContainerRef" class="flex-1 overflow-auto px-2 pb-2">
       <Item
         v-for="(item, index) in items"
-        :key="index"
+        :id="item.id"
+        :key="item.id ?? item.url"
         :active="index === curIndex"
         :icon="item.icon"
         :title="item.title"
         :url="item.url"
         :type="item.type ?? 'tab'"
+        @update="updateItems"
         @click="onClick(index)"
       />
     </div>
